@@ -1,0 +1,13 @@
+[Unit]
+Description=Wii Weight Daemon
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/chip
+ExecStart=/usr/bin/python wii-weight-daemon.py
+Restart=on-failure
+LimitNOFILE=10000
+
+[Install]
+WantedBy=multi-user.target
