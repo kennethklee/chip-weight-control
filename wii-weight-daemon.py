@@ -7,6 +7,7 @@ from subprocess import call
 
 GPIO = '1016'
 GPIO_FILENAME = '/sys/class/gpio/gpio' + GPIO + '/value'
+GPIO_EXPORT_FILENAME = '/sys/class/gpio/export'
 
 WII_WEIGHT_SCRIPT_PATH = '/home/chip/.homeassistant/scripts/wii-weight.py'
 
@@ -25,6 +26,7 @@ def read_edge(previous, interval=0.2):
     sleep(interval)
 
 if __name__ == "__main__":
+  os.system('echo ' + GPIO + ' > ' + GPIO_EXPORT_FILENAME)
   last_value = '1'
   
   while True:
